@@ -12,7 +12,6 @@ export default class ForecastCard extends Component {
 
 		// Hours part from the timestamp
 		var hours = date.getHours();
-		
 		// Minutes part from the timestamp
 		var minutes = "0" + date.getMinutes();
 
@@ -22,13 +21,9 @@ export default class ForecastCard extends Component {
 			<Card containerStyle={styles.card}>
 				<Text style={styles.notes}>{this.props.location}</Text>
 				
-				<View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
-					<Image style={{width:100, height:100}} source={{uri:"https://openweathermap.org/img/w/" + this.props.detail.weather[0].icon + ".png"}} />
+				<View style={{flexDirection:'row', alignItems:'center'}}>
 					<Text style={styles.time}>{time}</Text>
-				</View>
-
-				<Divider style={{ backgroundColor: '#dfe6e9', marginVertical:20}} />
-				
+				</View>			
 				<View style={{flexDirection:'row', justifyContent:'space-between'}}>
 					<Text style={styles.notes}>{this.props.detail.weather[0].description}</Text>
 					<Text style={styles.notes}>{Math.round( this.props.detail.main.temp * 10) / 10 }&#8451;</Text>
@@ -42,14 +37,14 @@ const styles = StyleSheet.create({
 	card:{
 		backgroundColor:'rgba(56, 172, 236, 1)',
 		borderWidth:0,
-		borderRadius:20
+		borderRadius:0
 	},
 	time:{
-		fontSize:38,
+		fontSize:15,
 		color:'#fff'
 	},
 	notes: {
-		fontSize: 18,
+		fontSize: 15,
 		color:'#fff',
 		textTransform:'capitalize'
 	}

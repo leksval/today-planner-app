@@ -1,5 +1,5 @@
 {
-  "name": "blissful-juice-box3",
+  "name": "today_planer-ver-2.0",
   "version": "0.0.0",
   "description": "No description",
   "author": null,
@@ -9,6 +9,8 @@
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-elements": "^0.19.1"
+    "prop-types": "15.7.2",
+    "react-native-elements": "^0.19.1",
+    "react-navigation": "3.11.0"
   }
 }
