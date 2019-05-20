@@ -5,6 +5,7 @@ import {createStackNavigator, createAppContainer} from 'react-navigation';
 import * as firebase from 'firebase';
 
 import SignInScreen from './screens/SignInScreen'
+import HomeScreen from './screens/HomeScreen'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
@@ -17,7 +18,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-class HomeScreen extends React.Component {
+class MainScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -31,26 +32,18 @@ class HomeScreen extends React.Component {
   }
 }
 
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-      </View>
-    );
-  }
-}
+
 
 
 
 const RootStack = createStackNavigator(
   {
-    Home: HomeScreen,
-    Details: DetailsScreen,
+    Main: MainScreen,
     SignIn: SignInScreen,
+    Home: HomeScreen
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Main',
   }
 );
 

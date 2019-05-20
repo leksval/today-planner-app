@@ -13,6 +13,8 @@ export default class SignInScreen extends React.Component {
         email: '',
         password: ''
     })
+
+    
 }
 
 signUpUser = (email, password) => {
@@ -35,10 +37,13 @@ loginUser = (email, password) => {
 
     try {
 
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
-            console.log(user)
-            
-        })
+        firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => this.props.navigation.navigate('Home'))
+        .then(function (user) {console.log(user)})
+        
+      
     }
     catch (error) {
         console.log(error.toString())
