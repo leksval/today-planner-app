@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button} from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight, Image} from 'react-native';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
 import * as firebase from 'firebase';
@@ -19,14 +19,26 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 class MainScreen extends React.Component {
+  static navigationOptions = () => ({
+    title: 'App ',  
+    headerTintColor: '#ae0578',
+    headerStyle: {
+      backgroundColor: '#032e5e'
+    },
+ /*   headerLeft:
+      <HeaderBarItem to='InfoScreen' title='App info' />,
+    headerRight:
+      <HeaderBarItem to='FeedbackScreen' title='Feedback' />
+      */
+  });
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Loadnig"
-          onPress={() => this.props.navigation.navigate('SignIn')}
-        />
+      
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#032e5e'}}>
+        
+        <TouchableHighlight onPress={() => this.props.navigation.navigate('SignIn')}>
+          <Image  source={require('./assets/icon.png')} />
+        </TouchableHighlight>
       </View>
     );
   }
@@ -45,6 +57,7 @@ const RootStack = createStackNavigator(
   {
     initialRouteName: 'Main',
   }
+  
 );
 
 
