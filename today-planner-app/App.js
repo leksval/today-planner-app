@@ -5,7 +5,10 @@ import {createStackNavigator, createAppContainer} from 'react-navigation';
 import * as firebase from 'firebase';
 
 import SignInScreen from './screens/SignInScreen'
+import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
+import IntroScreen from './screens/IntroScreen'
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
@@ -19,18 +22,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 class MainScreen extends React.Component {
-  static navigationOptions = () => ({
-    title: 'App ',  
-    headerTintColor: '#ae0578',
-    headerStyle: {
-      backgroundColor: '#032e5e'
-    },
- /*   headerLeft:
-      <HeaderBarItem to='InfoScreen' title='App info' />,
-    headerRight:
-      <HeaderBarItem to='FeedbackScreen' title='Feedback' />
-      */
-  });
+  static navigationOptions = { title: 'Welcome', header: null};
   render() {
     return (
       
@@ -52,7 +44,9 @@ const RootStack = createStackNavigator(
   {
     Main: MainScreen,
     SignIn: SignInScreen,
-    Home: HomeScreen
+    Register: RegisterScreen,
+    Home: HomeScreen,
+    Intro: IntroScreen
   },
   {
     initialRouteName: 'Main',
