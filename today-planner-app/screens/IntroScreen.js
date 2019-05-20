@@ -5,7 +5,7 @@ import { Container, Content, Header, Form, Input, Item,  Label } from 'native-ba
 
 
 
-export default class SignInScreen extends React.Component {
+export default class IntroScreen extends React.Component {
   static navigationOptions = { title: 'Welcome', header: null};
   state = { email: '', password: '', errorMessage: null }
 
@@ -26,7 +26,7 @@ export default class SignInScreen extends React.Component {
             {this.state.errorMessage}
           </Text>}
           <Item floatingLabel>
-                    <Label style={{color:'white'}}>email</Label>
+                    <Label>email</Label>
                     <Input
                         autoCorrect={false}
                         autoCapitalize="none"
@@ -36,7 +36,7 @@ export default class SignInScreen extends React.Component {
                     />
             </Item>
             <Item floatingLabel>
-                    <Label style={{color:'white'}}>password</Label>
+                    <Label>password</Label>
                     <Input
                         autoCorrect={false}
                         autoCapitalize="none"
@@ -49,7 +49,7 @@ export default class SignInScreen extends React.Component {
         <Button title="Login" onPress={this.handleLogin} />
         <Button
           title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('Register')}
+          onPress={() => this.props.navigation.navigate('SignUp')}
         />
       </View>
     )
