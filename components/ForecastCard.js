@@ -14,15 +14,13 @@ export default class ForecastCard extends Component {
 		var hours = date.getHours();
 		// Minutes part from the timestamp
 		var minutes = "0" + date.getMinutes();
-
 		time = hours + ':' + minutes.substr(-2);
 
 		return (
 			<Card containerStyle={styles.card}>
 				<Text style={styles.notes}>{this.props.location}</Text>
-				
 				<View style={{flexDirection:'row', alignItems:'center'}}>
-					<Text style={styles.time}>{time}</Text>
+				<Text style={styles.time}>{time}</Text>
 				</View>			
 				<View style={{flexDirection:'row', justifyContent:'space-between'}}>
 					<Text style={styles.notes}>{this.props.detail.weather[0].description}</Text>
@@ -36,15 +34,15 @@ export default class ForecastCard extends Component {
 const styles = StyleSheet.create({
 	card:{
 		backgroundColor:'rgba(56, 172, 236, 1)',
-		borderWidth:0,
-		borderRadius:0
+		borderWidth:1,
+		borderRadius:1
 	},
 	time:{
-		fontSize:15,
+		fontSize:20,
 		color:'#fff'
 	},
 	notes: {
-		fontSize: 15,
+		fontSize: 20,
 		color:'#fff',
 		textTransform:'capitalize'
 	}

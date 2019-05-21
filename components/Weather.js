@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import { weatherConditions } from '../utils/WeatherConditions';
 
-const Weather = ({ weather, temperature }) => {
+const Weather = ({ weather, temperature, smog, forecast }) => {
   return (
     <View
       style={[
@@ -21,11 +21,15 @@ const Weather = ({ weather, temperature }) => {
         <Text style={styles.tempText}>{temperature}˚</Text>
       </View>
       <View style={styles.bodyContainer}>
-        <Text style={styles.title}>{weatherConditions[weather].title}</Text>
-        <Text style={styles.subtitle}>
-          {weatherConditions[weather].subtitle}
-        </Text>
-      </View>
+          <Text style={styles.title}>{weatherConditions[weather].title}</Text>
+          <Text style={styles.subtitle}>
+            {weatherConditions[weather].subtitle}
+          </Text>
+      </View> 
+      <View style={styles.bodyContainer2}> 
+          <Text style={styles.title}>Air Quality</Text>
+          <Text style={styles.subtitle}> {smog}</Text>   
+      </View> 
     </View>
   );
 };
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   tempText: {
-    fontSize: 72,
+    fontSize: 52,
     color: '#fff'
   },
   bodyContainer: {
@@ -54,14 +58,21 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
     paddingLeft: 25,
-    marginBottom: 40
+    marginBottom: 20
+  },
+  bodyContainer2: {
+    flex: 2,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+    paddingLeft: 25,
+    marginBottom: 100
   },
   title: {
-    fontSize: 60,
+    fontSize: 40,
     color: '#fff'
   },
   subtitle: {
-    fontSize: 24,
+    fontSize: 20,
     color: '#fff'
   }
 });

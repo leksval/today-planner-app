@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { FlatList, Text, Button, View, StyleSheet, Animated} from 'react-native';
+import { FlatList, Text, Button, View, StyleSheet, TouchableOpacity} from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 import Weather from './components/Weather';
 import ForecastScreen from './screens/ForecastScreen';
-
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -11,7 +10,7 @@ class HomeScreen extends React.Component {
       latitude: 0,
       longitude: 0,
       forecast: [],
-      aqiData: {},
+      aqiData: 0,
       isLoading: true,
       temperature: 0,
       weatherCondition: null,
@@ -76,7 +75,7 @@ class HomeScreen extends React.Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          aqiData: data.data,
+          aqiData: data.data.current.pollution.aqius,
           loaded: true,
         });
         console.log(this.state.aqiData);
@@ -96,19 +95,27 @@ class HomeScreen extends React.Component {
     return answer;
   }
   render() {
-    const { isLoading, weatherCondition, temperature, forecast } = this.state;
+    const { isLoading, weatherCondition, temperature, forecast, aqiData } = this.state;
+    var smog = this.airQualityStatus(aqiData);
     return (
       <React.Fragment>
          <View style={styles.container}>
           {isLoading ? (
             <View style={styles.loadingContainer}>
               <Text style={styles.loadingText}>Fetching The Weather</Text>
-             </View>
+            </View>
           ) : (
-            <Weather weather={weatherCondition} temperature={temperature} />
+            <Weather weather={weatherCondition} temperature={temperature} smog={smog} forecast={forecast} />
            )}
-<Button onPress={() => this.props.navigation.navigate('Forecast', {forecast})}      title="Forecast"/>
-         </View>
+           {isLoading ? (
+             <TouchableOpacity>
+          <Text style={styles.buttonno}></Text>
+        </TouchableOpacity>
+              ) : (
+         <TouchableOpacity onPress={() => this.props.navigation.navigate('Forecast', {forecast})}>
+          <Text style={styles.buttonfor}>Forecast for next 5 days</Text>
+        </TouchableOpacity> )}
+        </View>
       </React.Fragment>
     );
   }
@@ -122,10 +129,34 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FFFDE4'
+    backgroundColor: 'white'
   },
   loadingText: {
     fontSize: 30
+  },
+  buttonfor: {
+    backgroundColor: 'purple',
+    borderColor: 'black',
+    borderWidth: 0,
+    borderRadius: 0,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign:'center',
+  },
+  buttonno: {
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 12,
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    overflow: 'hidden',
+    padding: 12,
+    textAlign:'center',
   }
 });
 
