@@ -11,7 +11,8 @@ export default class SignInScreen extends React.Component {
     super(props)
     this.state = ({
         email: '',
-        password: ''
+        password: '',
+        confirmedPass: ''
     })    
 }
 
@@ -55,12 +56,29 @@ render() {
                         onChangeText={(password) => this.setState({ password })}
                     />
                 </Item>
+                <Item floatingLabel>
+                    <Label style={{color:'white'}}>Confirm Password</Label>
+                    <Input
+                        secureTextEntry={true}
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        style={{ color: 'white' }}
+                        onChangeText={(confirmedPass) => this.setState({ confirmedPass })}
+                    />
+                </Item>
 
                 <Button style={{ marginTop: 10 }}
                     full
                     rounded
                     primary
-                    onPress={() => this.signUpUser(this.state.email, this.state.password)}
+                    onPress={
+                      (this.state.password == this.state.confirmedPass)?
+                      console.log("poszlo"):
+                      //() => this.signUpUser(this.state.email, this.state.password):
+                      alert("password must be the same in both fields")
+                      
+                      }
+                      
                 >
                     <Text style={{ color: 'white' }}> Sign Up</Text>
                 </Button>
