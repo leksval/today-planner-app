@@ -8,6 +8,11 @@ import SignInScreen from './screens/SignInScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import HomeScreen from './screens/HomeScreen'
 import IntroScreen from './screens/IntroScreen'
+import EventScreen from './screens/EventScreen'
+import FilesScreen from './screens/FilesScreen'
+import ForecastScreen from './screens/ForecastScreen'
+import NewEventScreen from './screens/NewEventScreen'
+import PlanScreen from './screens/PlanScreen'
 
 
 const firebaseConfig = {
@@ -46,7 +51,12 @@ const RootStack = createStackNavigator(
     SignIn: SignInScreen,
     Register: RegisterScreen,
     Home: HomeScreen,
-    Intro: IntroScreen
+    Intro: IntroScreen,
+    Event: EventScreen,
+    Files: FilesScreen,
+    Forecast: ForecastScreen,
+    NewEvent: NewEventScreen,
+    Plan: PlanScreen
   },
   {
     initialRouteName: 'Main',

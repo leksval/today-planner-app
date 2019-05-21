@@ -5,7 +5,7 @@ import { Container, Content, Header, Form, Input, Item, Button, Label } from 'na
 
 
 
-export default class HomeScreen extends React.Component {
+export default class ForecastScreen extends React.Component {
   constructor(props) {
     super(props)
 
@@ -32,9 +32,7 @@ static navigationOptions = () => ({
 render() {
     return (
         <Container style={styles.container}>
-            <Text>Home screen</Text>
-            <Button title="PlanButton" onPress={() => this.props.navigation.navigate('Plan')}><Text>Plan screen</Text></Button><Text>{"\n"}</Text>
-            <Button title="ForecastButton" onPress={() => this.props.navigation.navigate('Forecast')}><Text>Forecast screen</Text></Button>
+            <Text>Forecast screen</Text>
         </Container>
     );
 }
