@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text,Image, TouchableHighlight} from 'react-native';
 import * as firebase from 'firebase';
+import { CalendarList } from 'react-native-calendars'
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base';
 
 
@@ -29,14 +30,28 @@ static navigationOptions = () => ({
   });
 
 
-render() {
+// render() {
+//     return (
+//         <Container style={styles.container}>
+//             <Text>Plan screen</Text><Text>{"\n"}</Text>
+//             <Button title="NewEventButton (przerobić na floating '+' button)" onPress={() => this.props.navigation.navigate('NewEvent')}><Text>NewEvent screen</Text></Button><Text>{"\n"}</Text>
+//             <Button title="EventButton" onPress={() => this.props.navigation.navigate('Event')}><Text>Event screen</Text></Button>
+//         </Container>
+//     );
+// }
+// }
+
+render(){
     return (
         <Container style={styles.container}>
-            <Text>Plan screen</Text><Text>{"\n"}</Text>
-            <Button title="NewEventButton (przerobić na floating '+' button)" onPress={() => this.props.navigation.navigate('NewEvent')}><Text>NewEvent screen</Text></Button><Text>{"\n"}</Text>
-            <Button title="EventButton" onPress={() => this.props.navigation.navigate('Event')}><Text>Event screen</Text></Button>
+        <CalendarList
+        horizontal={true}
+        pagingEnabled={true}
+        calendarWidth={320}
+        />
         </Container>
-    );
+        
+    )
 }
 }
 
