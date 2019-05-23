@@ -7,11 +7,9 @@ import SendSMS from 'react-native-sms'
 export default class App extends React.Component {
   someFunction() {
     SendSMS.send({
-        //Message body
-        body: 'Please follow https://aboutreact.com',
-        //Recipients Number
+        
+        body: 'test',
         recipients: ['0123456789'],
-        //An array of types that would trigger a "completed" response when using android
         successTypes: ['sent', 'queued']
     }, (completed, cancelled, error) => {
         if(completed){
