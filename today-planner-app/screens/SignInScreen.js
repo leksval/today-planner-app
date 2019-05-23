@@ -20,47 +20,70 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+
+
+<View style={{
+        flex: 1,
+        width: 360,
+        height: 640,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <View style={{
+          flex: 1,
+          width: 360,
+          height: 100,
+          justifyContent: 'center',
+          alignItems: 'center',         
+          flexGrow: 1,
+          backgroundColor : '#032e5e'
+        }} >
+          <Image source={require('../assets/iconToday.png')} />
+        </View>
+        <View style={{
+          flex: 1,
+          width: 360,
+          height: 100,
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+          flexGrow: 2,
+          paddingHorizontal: 20               
+        }} >
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
-          <Item floatingLabel>
-                    <Label style={{color:'white'}}>email</Label>
+            <Item floatingLabel>
+                    <Label style={{color:'#032e5e'}}>email</Label>
                     <Input
                         autoCorrect={false}
                         autoCapitalize="none"
-                        style={{color:'white'}}
+                        style={{color:'#032e5e'}}
                         onChangeText={(email) => this.setState({ email })}
                         value={this.state.email}
                     />
             </Item>
             <Item floatingLabel>
-                    <Label style={{color:'white'}}>password</Label>
+                    <Label style={{color:'#032e5e'}}>password</Label>
                     <Input
                         autoCorrect={false}
                         autoCapitalize="none"
                         secureTextEntry={true}
-                        style={{color:'white'}}
+                        style={{color:'#032e5e'}}
                         onChangeText={(password) => this.setState({ password })}
                         value={this.state.password}
                     />
             </Item>
-        <Button title="Login" onPress={this.handleLogin} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => this.props.navigation.navigate('Register')}
-        />
+        <Item>
+        <Button color='#032e5e' title="Login" onPress={this.handleLogin} />
+        </Item>
+        <Item>
+        <Button color='#032e5e' title="Don't have an account? Sign Up" 
+        onPress={() => this.props.navigation.navigate('Register')}></Button>
+        </Item>
+        </View>
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 3,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#032e5e'
-  }
-})

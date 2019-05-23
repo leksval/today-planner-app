@@ -20,7 +20,11 @@ signUpUser = (email, password) => {
     try {
 
         if (this.state.password.length < 6) {
-            alert("Please enter atleast 6 characters")
+            alert("Please enter at least 6 characters")
+            return;
+        }
+        if (this.state.password != this.state.confirmedPass) {
+            alert("Passwords does not match")
             return;
         }
 
@@ -71,13 +75,7 @@ render() {
                     full
                     rounded
                     primary
-                    onPress={
-                      (this.state.password == this.state.confirmedPass)?
-                      console.log("poszlo"):
-                      //() => this.signUpUser(this.state.email, this.state.password):
-                      alert("password must be the same in both fields")
-                      
-                      }
+                    onPress={ () => this.signUpUser(this.state.email, this.state.password)}
                       
                 >
                     <Text style={{ color: 'white' }}> Sign Up</Text>

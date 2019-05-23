@@ -14,7 +14,6 @@ import ForecastScreen from './screens/ForecastScreen'
 import NewEventScreen from './screens/NewEventScreen'
 import PlanScreen from './screens/PlanScreen'
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
   authDomain: "todayplannersm-9880d.firebaseapp.com",
@@ -24,6 +23,7 @@ const firebaseConfig = {
   messagingSenderId: "749997580651",
   appId: "1:749997580651:web:9feccf4875cd0cf2"
 };
+
 firebase.initializeApp(firebaseConfig);
 
 class MainScreen extends React.Component {
@@ -41,10 +41,6 @@ class MainScreen extends React.Component {
   }
 }
 
-
-
-
-
 const RootStack = createStackNavigator(
   {
     Main: MainScreen,
@@ -60,13 +56,8 @@ const RootStack = createStackNavigator(
   },
   {
     initialRouteName: 'Main',
-  }
-  
+  }  
 );
-
-
-
-
 
 const AppContainer = createAppContainer(RootStack);
 
