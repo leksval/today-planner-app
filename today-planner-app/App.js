@@ -34,7 +34,7 @@ class MainScreen extends React.Component {
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#032e5e'}}>
         
         <TouchableHighlight onPress={() => this.props.navigation.navigate('SignIn')}>
-          <Image  source={require('./assets/icon.png')} />
+          <Image  source={require('./assets/logo.png')} />
         </TouchableHighlight>
       </View>
     );

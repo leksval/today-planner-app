@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableHighlight, Image, TextInput} from 'react-native';
+import {  Text, View, Image} from 'react-native';
 import * as firebase from 'firebase';
-import { Container, Content, Header, Form, Input, Item,  Label } from 'native-base';
+import { Input, Item,  Label, Button } from 'native-base';
 
 
 
@@ -54,7 +54,7 @@ export default class SignInScreen extends React.Component {
             {this.state.errorMessage}
           </Text>}
             <Item floatingLabel>
-                    <Label style={{color:'#032e5e'}}>email</Label>
+                    <Label style={{color:'#ae0578'}}><Text color='#ae0578'>email</Text></Label>
                     <Input
                         autoCorrect={false}
                         autoCapitalize="none"
@@ -64,7 +64,7 @@ export default class SignInScreen extends React.Component {
                     />
             </Item>
             <Item floatingLabel>
-                    <Label style={{color:'#032e5e'}}>password</Label>
+                    <Label style={{color:'#ae0578'}}>password</Label>
                     <Input
                         autoCorrect={false}
                         autoCapitalize="none"
@@ -74,13 +74,40 @@ export default class SignInScreen extends React.Component {
                         value={this.state.password}
                     />
             </Item>
-        <Item>
-        <Button color='#032e5e' title="Login" onPress={this.handleLogin} />
-        </Item>
-        <Item>
-        <Button color='#032e5e' title="Don't have an account? Sign Up" 
-        onPress={() => this.props.navigation.navigate('Register')}></Button>
-        </Item>
+            
+                <Button 
+                    style={{ marginTop: 40,
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={this.handleLogin}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> SIGN IN </Text>
+                </Button>          
+                <Button 
+                    style={{ 
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={() => this.props.navigation.navigate('Register')}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> DON'T HAVE AN ACCOUNT? SIGN UP </Text>
+                </Button> 
+                <Button 
+                    style={{ 
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={() => this.props.navigation.navigate('Register')}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> CONTINUE WITH FACEBOOK </Text>
+                </Button> 
+                <Button 
+                    style={{ 
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={() => this.props.navigation.navigate('Register')}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> CONTINUE WITH GOOLGE </Text>
+                </Button> 
+            
         </View>
       </View>
     )
