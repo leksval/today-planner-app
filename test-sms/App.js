@@ -1,5 +1,5 @@
 
-/*This is an Example of Sending Text SMS in React Native*/
+
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import SendSMS from 'react-native-sms'
@@ -7,18 +7,17 @@ import SendSMS from 'react-native-sms'
 export default class App extends React.Component {
   someFunction() {
     SendSMS.send({
-        
-        body: 'test',
+        //wyswietlany proponowany text
+        body: 'TodayPlanner - Twój znajomy będzie organizował spotkanie',
+        //numer odbiorcy
         recipients: ['0123456789'],
-        successTypes: ['sent', 'queued']
-    }, (completed, cancelled, error) => {
-        if(completed){
-          console.log('SMS Sent Completed');
-        }else if(cancelled){
-          console.log('SMS Sent Cancelled');
-        }else if(error){
-          console.log('Some error occured');
-        }
+        successTypes: ['sent', 'queued'],
+        allowAndroidSendWithoutReadPermission: true
+    }, 	 (completed, cancelled, error) => {
+
+		console.log('SMS Callback: completed: ' + completed + ' cancelled: ' + cancelled + 'error: ' + error);
+
+	
     });
   }
   render() {
