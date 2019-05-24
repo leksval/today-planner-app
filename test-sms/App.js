@@ -1,65 +1,53 @@
+import React, {Component} from 'react';
 
-
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
-import SendSMS from 'react-native-sms'
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
  
-export default class App extends React.Component {
-  someFunction() {
-    SendSMS.send({
-        //wyswietlany proponowany text
-        body: 'TodayPlanner - Twój znajomy będzie organizował spotkanie',
-        //numer odbiorcy
-        recipients: ['0123456789'],
-        successTypes: ['sent', 'queued'],
-        allowAndroidSendWithoutReadPermission: true
-    }, 	 (completed, cancelled, error) => {
-
-		console.log('SMS Callback: completed: ' + completed + ' cancelled: ' + cancelled + 'error: ' + error);
-
-	
-    });
-  }
+import Communications from 'react-native-communications';
+ 
+export default class App extends Component{
   render() {
     return (
-      <View style={styles.MainContainer}>
-        <TouchableOpacity onPress={this.someFunction.bind(this)}>
-        <View>
-          <Image
-            //We are showing the Image from online
-            source={{
-              uri:
-                'https://aboutreact.com/wp-content/uploads/2018/09/sms.png',
-            }}
-            //You can also show the image from you project directory like below
-            //source={require('./Images/sms.png')}
-            style={styles.ImageStyle}
-          />
-          <Text style={styles.text}>Send SMS</Text>
-          </View>
+      <View style={styles.container}>
+        <Text style={styles.headingStyle}>Today Planner powiadomienia</Text>
+        
+
+        {/*To send the text message function(phoneNumber = null, body = null)*/}
+        <TouchableOpacity 
+          style = {styles.button}
+          onPress={() => Communications.text('', 'Twój znajomy bieże udział w zbliżającym się wydarzeniu')}>
+            <Text style={styles.text}>
+              Wyślij wiadomość
+            </Text>
         </TouchableOpacity>
+ 
+
       </View>
     );
   }
 }
-const styles = StyleSheet.create({
-  MainContainer: {
+ 
+var styles = StyleSheet.create({
+  container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff',
-    borderWidth: 1,
-    borderColor: '#000',
+    backgroundColor: 'rgb(253,253,253)',
+    padding: 16,
+  },
+  headingStyle: {
+    fontSize: 25,
+    textAlign: 'center',
+    padding: 30,
+  },
+  button: {
+    justifyContent: 'center',
+    width : 300,
+    backgroundColor:"#307cae",
+    marginTop : 20,
   },
   text: {
-    color: 'black',
-    textAlign:'center',
-    fontSize: 25,
-    marginTop:16,
-  },
-  ImageStyle: {
-    height: 150,
-    width: 150,
-    resizeMode: 'stretch',
+    fontSize: 18,
+    textAlign : 'center',
+    padding : 10,
+    color : '#ffffff',
   },
 });
