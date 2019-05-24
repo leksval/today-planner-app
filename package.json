@@ -1,0 +1,17 @@
+{
+  "name": "today_planer_ankiety-ver-1.2",
+  "version": "0.0.0",
+  "description": "No description",
+  "author": null,
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "dependencies": {
+    "expo": "^32.0.0",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "prop-types": "15.7.2",
+    "react-native-communications": "2.2.1",
+    "react-native-elements": "^0.19.1",
+    "react-navigation": "3.11.0"
+  }
+}
