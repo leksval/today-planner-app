@@ -1,5 +1,5 @@
 {
-  "name": "test-sms",
+  "name": "sms_notification_test",
   "version": "0.0.0",
   "description": "No description",
   "author": null,
@@ -9,7 +9,7 @@
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-    "react-native-paper": "2.2.8",
-    "react-native-sms": "1.9.0"
+    "react-native-communications": "2.2.1",
+    "react-native-paper": "2.2.8"
   }
 }
