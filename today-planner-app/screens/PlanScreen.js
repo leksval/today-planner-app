@@ -10,6 +10,9 @@ export default class PlanScreen extends React.Component {
     super(props)
 
 }
+static navigateToHome=() => {
+    this.props.navigation.navigate('Home')
+}
 static navigationOptions = () => ({
     title: 'TO-DAY',  
     headerTintColor: '#ae0578',
@@ -17,7 +20,7 @@ static navigationOptions = () => ({
       backgroundColor: '#032e5e'
     },
     headerLeft:
-    <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}>
+    <TouchableHighlight onPress={this.navigateToHome}>
     <Image 
         style={{flex:1, height: 100, width: 100}}
         source={require('../assets/icon.png')} 

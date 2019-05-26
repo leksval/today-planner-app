@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text,Image, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text,Image, TouchableHighlight, HeaderBarItem} from 'react-native';
 import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base';
 
@@ -10,6 +10,9 @@ export default class HomeScreen extends React.Component {
     super(props)
 
 }
+static navigateToHome=() => {
+    this.props.navigation.navigate('Home')
+}
 static navigationOptions = () => ({
     title: 'TO-DAY',  
     headerTintColor: '#ae0578',
@@ -17,14 +20,16 @@ static navigationOptions = () => ({
       backgroundColor: '#032e5e'
     },
     headerLeft:
-    <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}>
+    <TouchableHighlight onPress={this.navigateToHome}>
     <Image 
         style={{flex:1, height: 100, width: 100}}
         source={require('../assets/icon.png')} 
         resizeMode="contain" />
  </TouchableHighlight>
+
   //  headerRight:
-  //    <HeaderBarItem to='FeedbackScreen' title='Feedback' />
+
+     // <HeaderBarItem to='Home' title='Feedback' />
       
   });
 

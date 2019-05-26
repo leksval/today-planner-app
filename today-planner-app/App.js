@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableHighlight, Image} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import {createStackNavigator, createAppContainer, DrawerNavigator} from 'react-navigation';
 
 import * as firebase from 'firebase';
 
@@ -23,8 +23,11 @@ const firebaseConfig = {
   messagingSenderId: "749997580651",
   appId: "1:749997580651:web:9feccf4875cd0cf2"
 };
-
+export const provider = new firebase.auth.FacebookAuthProvider()
 firebase.initializeApp(firebaseConfig);
+
+
+
 
 class MainScreen extends React.Component {
   static navigationOptions = { title: 'Welcome', header: null};
@@ -55,7 +58,7 @@ const RootStack = createStackNavigator(
     Plan: PlanScreen
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'SignIn',
   }  
 );
 
