@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableHighlight, Image} from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight, Image, FlatList, TouchableOpacity} from 'react-native';
 import {createStackNavigator, createAppContainer, DrawerNavigator} from 'react-navigation';
 
 import * as firebase from 'firebase';
@@ -13,6 +13,7 @@ import FilesScreen from './screens/FilesScreen'
 import ForecastScreen from './screens/ForecastScreen'
 import NewEventScreen from './screens/NewEventScreen'
 import PlanScreen from './screens/PlanScreen'
+import PollScreen from './screens/PollScreen'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
@@ -55,7 +56,8 @@ const RootStack = createStackNavigator(
     Files: FilesScreen,
     Forecast: ForecastScreen,
     NewEvent: NewEventScreen,
-    Plan: PlanScreen
+    Plan: PlanScreen,
+    Poll: PollScreen
   },
   {
     initialRouteName: 'SignIn',

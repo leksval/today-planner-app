@@ -1,21 +1,19 @@
 {
+  "name": "github.com/todayplanner/today-planner-app:today-planner-app",
+  "version": "0.0.0",
+  "description": "todayplanner/today-planner-app @ May 26, 2019",
+  "author": null,
+  "private": true,
   "main": "node_modules/expo/AppEntry.js",
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject"
-  },
   "dependencies": {
     "expo": "^32.0.0",
-    "firebase": "^6.0.4",
-    "native-base": "^2.12.1",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "firebase": "^6.0.4",
+    "native-base": "^2.12.1",
+    "prop-types": "15.7.2",
+    "react-native-communications": "2.2.1",
+    "react-native-elements": "1.1.0",
     "react-navigation": "^3.11.0"
-  },
-  "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
-  },
-  "private": true
+  }
 }
