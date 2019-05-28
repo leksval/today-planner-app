@@ -14,7 +14,8 @@ export default class App extends Component{
         {/*To send the text message function(phoneNumber = null, body = null)*/}
         <TouchableOpacity 
           style = {styles.button}
-          onPress={() => Communications.text('', 'Twój znajomy bieże udział w zbliżającym się wydarzeniu')}>
+          //numer zostawiony pusty, mozna ustalic staly, staly tekst wyswietlany w wiadomosci ale modyfikowalny 
+          onPress={() => Communications.text('', 'Twój znajomy bierze udział w zbliżającym się wydarzeniu')}>
             <Text style={styles.text}>
               Wyślij wiadomość
             </Text>
