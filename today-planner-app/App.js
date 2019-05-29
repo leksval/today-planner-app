@@ -13,6 +13,7 @@ import FilesScreen from './screens/FilesScreen'
 import ForecastScreen from './screens/ForecastScreen'
 import NewEventScreen from './screens/NewEventScreen'
 import PlanScreen from './screens/PlanScreen'
+import CreateEventScreen from './screens/CreateEventScreen'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
@@ -55,7 +56,8 @@ const RootStack = createStackNavigator(
     Files: FilesScreen,
     Forecast: ForecastScreen,
     NewEvent: NewEventScreen,
-    Plan: PlanScreen
+    Plan: PlanScreen,
+    CreateEvent: CreateEventScreen,
   },
   {
     initialRouteName: 'SignIn',

@@ -37,7 +37,8 @@ render() {
         <Container style={styles.container}>
             <Text>Plan screen</Text><Text>{"\n"}</Text>
             <Button title="NewEventButton (przerobić na floating '+' button)" onPress={() => this.props.navigation.navigate('NewEvent')}><Text>NewEvent screen</Text></Button><Text>{"\n"}</Text>
-            <Button title="EventButton" onPress={() => this.props.navigation.navigate('Event')}><Text>Event screen</Text></Button>
+            <Button title="EventButton" onPress={() => this.props.navigation.navigate('Event')}><Text>Event screen</Text></Button><Text>{"\n"}</Text>
+            <Button title="CreateEventButton" onPress={() => this.props.navigation.navigate("CreateEvent")}><Text>Create an Event</Text></Button>
         </Container>
     );
 }
