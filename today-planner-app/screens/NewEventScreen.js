@@ -11,20 +11,60 @@ import {
 } from 'react-native';
 import XDate from 'xdate';
 import {ExpandableCalendar, AgendaList, CalendarProvider} from 'react-native-calendars';
-// import {items} from "./CreateEventScreen";
+import firebase from 'firebase';
 
 const START_DATE = XDate().toString('yyyy-MM-dd');
-const items = [
+var items = [
   {title: '2019-06-01', data: [{hour: '1pm', duration: '1h', title: 'Ashtanga Yoga'}, {hour: '2pm', duration: '1h', title: 'Deep Streches'}, {hour: '3pm', duration: '1h', title: 'Private Yoga'}]},
   {title: '2019-06-02', data: [{hour: '12am', duration: '1h', title: 'Ashtanga Yoga'}]},
   {title: '2019-06-03', data: [{}]},
 ];
 
 
-export { items }
-console.log(items)
+items.push({title: "2019-06-04", data: [{hour: "3", duration: "6", title: "lole" + " lole2"}]})
+
 export default class ExpandableCalendarScreen extends Component {
-  
+//   state = {
+//     userId: firebase.auth().currentUser.uid, 
+//     items: [],
+// };
+
+// constructor() {
+//     super();
+//     this.database = firebase.database().ref(`${this.state.userId}`);
+//     this.database.once('value', function (snapshot) {
+//       console.log(snapshot.val())
+//   })
+// }
+
+
+// getDataFromDatabase() {
+//   console.log("are there elements?")
+//   this.database = firebase.database().ref(`${this.state.userId}`);
+//   this.database.once('value', function (snapshot) {
+//       products = snapshot.val();
+//       console.log("PLEASE FOR THE LOVE OF GOD" + products)
+//       items = [];
+//       if (products === null) return;
+//       products.forEach(product => {
+//           items.push({
+//               title: product.date,
+//               data: [{
+//                 hour: product.hour,
+//                 duration: product.duration,
+//                 title: product.title + " " + product.place
+//               }]
+//           })
+//       });
+//   })
+
+// }
+
+// componentWillMount() {
+//   this.getDataFromDatabase();
+// }
+
+
   onDateChanged = (/**date, updateSource*/) => {
     // console.warn('ExpandableCalendarScreen onDateChanged: ', date, updateSource);
     // fetch and set data for date + week ahead
@@ -129,11 +169,6 @@ export default class ExpandableCalendarScreen extends Component {
     return (
       <CalendarProvider date={START_DATE} onDateChanged={this.onDateChanged}>
         <ExpandableCalendar 
-          // horizontal={false}
-          // hideArrows
-          // disablePan
-          // hideKnob
-          // initialPosition={'open'} // ExpandableCalendar.positions.OPEN - can't find static positions
           firstDay={1}
           markedDates={this.getMarkedDates()} // {'2019-06-01': {marked: true}, '2019-06-02': {marked: true}, '2019-06-03': {marked: true}};
           calendarStyle={style}
@@ -144,7 +179,6 @@ export default class ExpandableCalendarScreen extends Component {
           data={items}
           renderItem={this.renderItem}
           sections={this.getSections()}
-          // sectionStyle={{backgroundColor: '#f0f4f7', color: '#79838a'}}
         />
       </CalendarProvider>
     );

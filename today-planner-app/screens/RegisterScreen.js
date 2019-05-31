@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image} from 'react-native';
 import { Form, Input, Item, Button, Label } from 'native-base';
-
+import * as firebase from 'firebase';
 
 
 export default class SignInScreen extends React.Component {

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Text, View, Image} from 'react-native';
 import { Form, Input, Item, Button, Label } from 'native-base';
-import { items } from './NewEventScreen'
+import firebase from 'firebase';
 
-
-export default class RegisterScreen extends React.Component {
+export default class CreateEvent extends React.Component {
   static navigationOptions = { title: 'Welcome', header: null};
   constructor(props) {
     super(props)
@@ -14,12 +13,12 @@ export default class RegisterScreen extends React.Component {
         hour: '',
         place: '',
         length: '',
-    }) 
+    })
+    if (firebase.auth().currentUser !== null) 
+        console.log("user id: " + firebase.auth().currentUser.uid); 
+        userId = firebase.auth().currentUser.uid
     
 }
-
-
-
 
 createEvent = (title, date, place, length, hour, items) => {
     try {
@@ -45,14 +44,21 @@ createEvent = (title, date, place, length, hour, items) => {
         }
         alert("Event created")
         this.props.navigation.navigate("NewEvent")
-        return (items.push({title: date, data: [{hour: hour, duration: length, title: title + place}]}))
-        
+        firebase.database().ref(userId).push({
+            title,
+            date,
+            place,
+            length,
+            hour
+        })
     }
          catch (error) {
          console.log(error.toString())
          console.log(items)
     }
 }
+
+
 
 render() {
     return (
@@ -154,5 +160,3 @@ render() {
     );
 }
 }
-
-export { items }
