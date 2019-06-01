@@ -25,7 +25,12 @@ signUpUser = (email, password) => {
             alert("Passwords does not match")
             return;
         }
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(alert("Successfully registered!"))
+        .then(() => this.props.navigation.navigate('Home'))
+        
     }
     catch (error) {
         console.log(error.toString())
