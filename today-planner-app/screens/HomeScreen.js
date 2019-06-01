@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text,Image, TouchableHighlight, HeaderBarItem, FlatList, Button, View, TouchableOpacity} from 'react-native';
 import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Label } from 'native-base';
-import Weather from './components/Weather';
+import Weather from '../components/Weather';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
