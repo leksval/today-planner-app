@@ -49,16 +49,16 @@ export default class App extends React.Component {
               textAlign: 'center',
               marginHorizontal: 15,
             }}>
-            Upload Image 
+            Today Planner - udostępnianie zdjęć 
           </Text>
         )}
 
         <Button
           onPress={this._pickImage}
-          title="Pick an image from camera roll"
+          title="Wybierz zdjęcie do udostępnienia"
         />
 
-        <Button onPress={this._takePhoto} title="Take a photo" />
+        <Button onPress={this._takePhoto} title="Zrób zdjęcie" />
 
         {this._maybeRenderImage()}
         {this._maybeRenderUploadingOverlay()}
@@ -126,14 +126,14 @@ export default class App extends React.Component {
   _share = () => {
     Share.share({
       message: this.state.image,
-      title: 'Check out this photo',
+      title: 'Obejrzyj to zdjęcie',
       url: this.state.image,
     });
   };
 
   _copyToClipboard = () => {
     Clipboard.setString(this.state.image);
-    alert('Copied image URL to clipboard');
+    alert('Skopiowano URL zdjęcia');
   };
 
   _takePhoto = async () => {
@@ -164,7 +164,7 @@ export default class App extends React.Component {
       }
     } catch (e) {
       console.log(e);
-      alert('Upload failed, sorry :(');
+      alert('Udostępnianie się nie powiodło');
     } finally {
       this.setState({ uploading: false });
     }
@@ -172,8 +172,7 @@ export default class App extends React.Component {
 }
 
 async function uploadImageAsync(uri) {
-  // Why are we using XMLHttpRequest? See:
-  // https://github.com/expo/expo/issues/2402#issuecomment-443726662
+
   const blob = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
@@ -194,7 +193,6 @@ async function uploadImageAsync(uri) {
     .child(uuid.v4());
   const snapshot = await ref.put(blob);
 
-  // We're done with the blob, close and release it
   blob.close();
 
   return await snapshot.ref.getDownloadURL();
