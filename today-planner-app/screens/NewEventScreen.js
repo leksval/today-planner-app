@@ -8,83 +8,88 @@ import {
   Text,
   TouchableOpacity,
   Button,
-  Image
+  Image,
+  Loading,
+  ActivityIndicator,
+  AppRegistry,
+
 } from 'react-native';
 import XDate from 'xdate';
 import {ExpandableCalendar, AgendaList, CalendarProvider} from 'react-native-calendars';
 import firebase from 'firebase';
 
 const START_DATE = XDate().toString('yyyy-MM-dd');
-var items = [
-  {title: '2019-06-01', data: [{hour: '1pm', duration: '1h', title: 'Ashtanga Yoga'}, {hour: '2pm', duration: '1h', title: 'Deep Streches'}, {hour: '3pm', duration: '1h', title: 'Private Yoga'}]},
-  {title: '2019-06-02', data: [{hour: '12am', duration: '1h', title: 'Ashtanga Yoga'}]},
-  {title: '2019-06-03', data: [{}]},
-];
+var items = []
+// var items = [
+//   {title: '2019-06-01', data: [{hour: '1pm', duration: '1h', title: 'Ashtanga Yoga'}, {hour: '2pm', duration: '1h', title: 'Deep Streches'}, {hour: '3pm', duration: '1h', title: 'Private Yoga'}]},
+//   {title: '2019-06-02', data: [{hour: '12am', duration: '1h', title: 'Ashtanga Yoga'}]},
+//   {title: '2019-06-03', data: [{}]},
+// ];
 
 
-items.push({title: "2019-06-04", data: [{hour: "3", duration: "6", title: "lole" + " lole2"}]})
+// // items.push({title: "2019-06-04", data: [{hour: "3", duration: "6", title: "lole" + " lole2"}]})
 
 export default class ExpandableCalendarScreen extends Component {
-//   state = {
-//     userId: firebase.auth().currentUser.uid, 
-//     items: [],
-// };
+  state = {
+    userId: firebase.auth().currentUser.uid, 
+    items: [],
+    loaded: false
+};
 
-// constructor() {
-//     super();
-//     this.database = firebase.database().ref(`${this.state.userId}`);
-//     this.database.once('value', function (snapshot) {
-//       console.log(snapshot.val())
-//   })
-// }
+constructor() {
+    super();
+    this.database = firebase.database().ref(`${this.state.userId}`);
+    this.database.once('value', function (snapshot) {
+  })
+}
 
-
-// getDataFromDatabase() {
-//   console.log("are there elements?")
-//   this.database = firebase.database().ref(`${this.state.userId}`);
-//   this.database.once('value', function (snapshot) {
-//       products = snapshot.val();
-//       console.log("PLEASE FOR THE LOVE OF GOD" + products)
-//       items = [];
-//       if (products === null) return;
-//       products.forEach(product => {
-//           items.push({
-//               title: product.date,
-//               data: [{
-//                 hour: product.hour,
-//                 duration: product.duration,
-//                 title: product.title + " " + product.place
-//               }]
-//           })
-//       });
-//   })
-
-// }
-
-// componentWillMount() {
-//   this.getDataFromDatabase();
-// }
-
-
-  onDateChanged = (/**date, updateSource*/) => {
-    // console.warn('ExpandableCalendarScreen onDateChanged: ', date, updateSource);
-    // fetch and set data for date + week ahead
+  getDataFromDatabase() {
+    this.database = firebase.database().ref(`${this.state.userId}`);
+    this.database.on('value', function (snapshot) {
+        let ele = snapshot.val()
+        if (ele == null){
+          return
+        }
+        let products = Object.values(ele)
+        items = []
+        products.forEach(products => {
+            items.push({
+                title: products.date,
+                data: [{
+                  hour: products.hour,
+                  duration: products.length,
+                  title: products.title
+                }]
+            })
+        });
+        loaded = true
+    })
+  
   }
-  getSections() {
-    const sections = _.compact(_.map(items, (item) => {
-      return {title: item.title, data: item.data};
-    }));
-    return sections;
-  }
+  
+  componentDidMount() {
+    this.getDataFromDatabase();
+}
 
-  renderEmptyItem() {
-    return (
-      <View style={styles.emptyItem}>
-        <Text style={styles.emptyItemText}>No Events Planned</Text>
-      </View>
-    );
-  }
+onDateChanged = (/**date, updateSource*/) => {
+  // console.warn('ExpandableCalendarScreen onDateChanged: ', date, updateSource);
+  // fetch and set data for date + week ahead
+}
+getSections() {
+  const sections = _.compact(_.map(items, (item) => {
+    return {title: item.title, data: item.data};
+  }));
+  return sections;
 
+}
+
+renderEmptyItem() {
+  return (
+    <View style={styles.emptyItem}>
+      <Text style={styles.emptyItemText}>No Events Planned</Text>
+    </View>
+  );
+}
   renderItem = ({item}) => {
     if (_.isEmpty(item)) {
       return this.renderEmptyItem();
@@ -95,7 +100,7 @@ export default class ExpandableCalendarScreen extends Component {
       hour: item.hour,
       duration: item.duration,
       title: item.title,
-      button: {label: 'info',  onPress: () => Alert.alert('show more')},
+      button: {label: 'info', onPress: () => Alert.alert('show more')},
       onPress: () => Alert.alert(id)
     };
 
@@ -176,9 +181,10 @@ export default class ExpandableCalendarScreen extends Component {
       resizeMode="contain" />
   });
 
-  render() {    
+  render() {  
     const style = {paddingLeft: 20, paddingRight: 20};
-
+    if (!this.state.loaded){
+      setTimeout(() => {this.setState({loaded: true})}, 15000)}
     return (
       <CalendarProvider date={START_DATE} onDateChanged={this.onDateChanged}>
         <ExpandableCalendar 
@@ -236,4 +242,4 @@ const styles = StyleSheet.create({
     color: '#79838a',
     fontSize: 14
   }
-});
+})

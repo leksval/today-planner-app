@@ -20,7 +20,7 @@ export default class CreateEvent extends React.Component {
     
 }
 
-createEvent = (title, date, place, length, hour, items) => {
+createEvent = (title, date, hour, length, items) => {
     try {
         if (!this.state.title) {
             alert("Title box must not be empty")
@@ -34,10 +34,6 @@ createEvent = (title, date, place, length, hour, items) => {
             alert("Choose the hour")
             return;
         }
-        if (!this.state.place) {
-            alert("Enter Place") 
-            return;
-        }
         if (!this.state.length) {
             alert("Enter duration of the event")
             return;
@@ -47,7 +43,6 @@ createEvent = (title, date, place, length, hour, items) => {
         firebase.database().ref(userId).push({
             title,
             date,
-            place,
             length,
             hour
         })
@@ -105,7 +100,7 @@ render() {
                     />
                 </Item>
                 <Item floatingLabel>
-                    <Label style={{color:'#ae0578'}}>date</Label>
+                    <Label style={{color:'#ae0578'}}>date (YYYY-MM-DD)</Label>
                     <Input
                         secureTextEntry={false}
                         autoCorrect={false}
@@ -125,16 +120,6 @@ render() {
                     />
                 </Item>   
                 <Item floatingLabel>
-                    <Label style={{color:'#ae0578'}}>place</Label>
-                    <Input
-                        secureTextEntry={false}
-                        autoCorrect={false}
-                        autoCapitalize="sentences"
-                        style={{ color: '#032e5e' }}
-                        onChangeText={(place) => this.setState({ place })}
-                    />
-                </Item>
-                <Item floatingLabel>
                     <Label style={{color:'#ae0578'}}>how many hours?</Label>
                     <Input
                         secureTextEntry={false}
@@ -149,7 +134,7 @@ render() {
                              backgroundColor:'#032e5e'}}
                     full
                     primary
-                    onPress={ () => this.createEvent(this.state.title, this.state.date, this.state.hour, this.state.place, this.state.length)}>
+                    onPress={ () => this.createEvent(this.state.title, this.state.date, this.state.hour, this.state.length)}>
                     <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> Create Event </Text>
                 </Button>           
             </Form>
