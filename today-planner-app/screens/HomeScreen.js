@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text,Image, TouchableHighlight, HeaderBarItem, FlatList, Button, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text,Image, TouchableHighlight, HeaderBarItem, FlatList, View, TouchableOpacity} from 'react-native';
 import * as firebase from 'firebase';
-import { Container, Content, Header, Form, Input, Item, Label } from 'native-base';
+import { Container, Button, Content, Header, Form, Input, Item, Label } from 'native-base';
 import Weather from '../components/Weather';
 
 export default class HomeScreen extends React.Component {
@@ -18,28 +18,19 @@ export default class HomeScreen extends React.Component {
       error: '',
     };
 }
-static navigateToHome=() => {
-    this.props.navigation.navigate('Home')
-}
-static navigationOptions = () => ({
-    title: 'TO-DAY',  
-    headerTintColor: '#ae0578',
-    headerStyle: {
-      backgroundColor: '#032e5e'
-    },
-    headerLeft:
-    <TouchableHighlight onPress={this.navigateToHome}>
-    <Image 
-        style={{flex:1, height: 100, width: 100}}
-        source={require('../assets/icon.png')} 
-        resizeMode="contain" />
- </TouchableHighlight>
+static navigationOptions = () => ({ 
+  headerTintColor: '#ae0578',
+  headerStyle: {
+    backgroundColor: '#032e5e'
+  },
 
-  //  headerRight:
+headerRight:
+<Image 
+    style={{flex:1, height: 100, width: 100, marginRight: 10}}
+    source={require('../assets/iconToday.png')} 
+    resizeMode="contain" />
+});
 
-     // <HeaderBarItem to='Home' title='Feedback' />
-      
-  });
 componentDidMount() {
     this.getLocation();
     this.getAirQ();
@@ -121,13 +112,19 @@ render() {
     var smog = this.airQualityStatus(aqiData);
     return (
       <React.Fragment>
-        <Container style={styles.container}>
-            <Text>Home screen</Text>
-            <Button title="PlanButton" onPress={() => this.props.navigation.navigate('Plan')}><Text>Plan screen</Text></Button><Text>{"\n"}</Text>
-            <Button title="ForecastButton" onPress={() => this.props.navigation.navigate('Forecast')}><Text>Forecast screen</Text></Button>
-            <Button title="Send Poll" onPress={() => this.props.navigation.navigate('Poll')}><Text>Forecast screen</Text></Button>
-        </Container>
+  
+           
+ 
          <View style={styles.container}>
+         <Button 
+                    style={{ marginTop: 40,
+                             marginBottom:20,
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={() => this.props.navigation.navigate('Plan')}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> MY PLANNER </Text>
+          </Button>  
           {isLoading ? (
             <View style={styles.loadingContainer}>
               <Text style={styles.loadingText}>Fetching The Weather</Text>
@@ -140,16 +137,19 @@ render() {
           <Text style={styles.buttonno}></Text>
         </TouchableOpacity>
               ) : (
-          <View>
-         <TouchableOpacity onPress={() => this.props.navigation.navigate('Forecast', {forecast})}>
-          <Text style={styles.buttonfor}>Forecast for next 5 days</Text>
-        </TouchableOpacity> 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Polls')}>
-          <Text style={styles.buttonfor}>Polls</Text>
-        </TouchableOpacity>
+        <View>
+        <Button 
+                    style={{ marginTop: 10,
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={() => this.props.navigation.navigate('Forecast', {forecast})}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> FORECAST FOR NEXT 5 DAYS </Text>
+        </Button> 
         </View>
         )}
         </View>
+ 
         </React.Fragment>
     );
 }

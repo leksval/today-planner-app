@@ -13,23 +13,18 @@ export default class ForecastScreen extends React.Component {
     };
 
 }
-static navigationOptions = () => ({
-    title: 'TO-DAY',  
-    headerTintColor: '#ae0578',
-    headerStyle: {
-      backgroundColor: '#032e5e'
-    },
-    headerLeft:
-    <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}>
-    <Image 
-        style={{flex:1, height: 100, width: 100}}
-        source={require('../assets/icon.png')} 
-        resizeMode="contain" />
- </TouchableHighlight>
-  //  headerRight:
-  //    <HeaderBarItem to='FeedbackScreen' title='Feedback' />
-      
-  });
+static navigationOptions = () => ({ 
+  headerTintColor: '#ae0578',
+  headerStyle: {
+    backgroundColor: '#032e5e'
+  },
+
+headerRight:
+<Image 
+    style={{flex:1, height: 100, width: 100, marginRight: 10}}
+    source={require('../assets/iconToday.png')} 
+    resizeMode="contain" />
+});
 
 
 render() {
@@ -37,7 +32,7 @@ render() {
         <Container style={styles.container}>
          <FlatList
           data={this.state.forecastData.list}
-          style={{ marginTop: 20 }}
+          style={{ marginTop: 20}}
           keyExtractor={item => item.dt_txt}
           renderItem={({ item }) => (
             <ForecastCard
