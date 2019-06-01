@@ -14,10 +14,15 @@
     "react": "16.5.0",
     "react-firebaseui": "^3.1.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+
     "react-native-cli": "^2.0.1",
     "react-native-fbsdk": "^0.8.0",
     "react-native-web-storage": "^0.2.2",
     "react-navigation": "^3.11.0"
+    "react-native-calendars": "^1.150.0",
+    "react-navigation": "^3.11.0",
+    "xdate": "^0.8.2"
+
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
