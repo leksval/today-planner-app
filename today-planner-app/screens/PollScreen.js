@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text,Image, TouchableHighlight, FlatList, View, TouchableOpacity, TextInput, Alert} from 'react-native';
 import * as firebase from 'firebase';
 import { Container, Content, Header, Form, Input, Item, Button, Label } from 'native-base';
-import PollData from './components/PollData';
+import PollData from '../components/PollData';
 import Communications from 'react-native-communications';
 
 
