@@ -14,7 +14,7 @@ import ForecastScreen from './screens/ForecastScreen'
 import NewEventScreen from './screens/NewEventScreen'
 import PlanScreen from './screens/PlanScreen'
 import CreateEventScreen from './screens/CreateEventScreen'
-
+import PollScreen from './screens/PollScreen'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
@@ -61,7 +61,7 @@ const RootStack = createStackNavigator(
     NewEvent: NewEventScreen,
     Plan: PlanScreen,
     CreateEvent: CreateEventScreen,
-
+    Poll: PollScreen
   },
   {
     initialRouteName: 'SignIn',
