@@ -7,7 +7,8 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Button
+  Button,
+  Image
 } from 'react-native';
 import XDate from 'xdate';
 import {ExpandableCalendar, AgendaList, CalendarProvider} from 'react-native-calendars';
@@ -94,7 +95,7 @@ export default class ExpandableCalendarScreen extends Component {
       hour: item.hour,
       duration: item.duration,
       title: item.title,
-      button: {label: 'info', onPress: () => Alert.alert('show more')},
+      button: {label: 'info',  onPress: () => Alert.alert('show more')},
       onPress: () => Alert.alert(id)
     };
 
@@ -124,8 +125,8 @@ export default class ExpandableCalendarScreen extends Component {
   }
 
   getTheme = () => {
-    const themeColor = '#0059ff';
-    const lightThemeColor = '#e6efff';
+    const themeColor = '#032e5e';
+    const lightThemeColor = '#05468e';
     const disabledColor = '#a6acb1';
     const black = '#20303c';
     const white = '#ffffff';
@@ -162,6 +163,18 @@ export default class ExpandableCalendarScreen extends Component {
       dotStyle: {marginTop: -2},
     };
   }
+  static navigationOptions = () => ({ 
+    headerTintColor: '#ae0578',
+    headerStyle: {
+      backgroundColor: '#032e5e'
+    },
+  
+  headerRight:
+  <Image 
+      style={{flex:1, height: 100, width: 100, marginRight: 10}}
+      source={require('../assets/iconToday.png')} 
+      resizeMode="contain" />
+  });
 
   render() {    
     const style = {paddingLeft: 20, paddingRight: 20};

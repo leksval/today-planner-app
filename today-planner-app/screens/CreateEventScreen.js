@@ -145,7 +145,7 @@ render() {
                     />
                 </Item>          
                 <Button 
-                    style={{ marginTop: 60,
+                    style={{ marginTop: 40,
                              backgroundColor:'#032e5e'}}
                     full
                     primary
