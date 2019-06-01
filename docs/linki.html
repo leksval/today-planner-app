@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <link rel="shortcut icon" type="image/x-icon" href="images/fav.jpg"/>    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
     <![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav id="navbarA" class="navbar navbar-default navbar-fixed-top">
         <div class="container_front_page">
             <div class="navbar-header scr-pg">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -39,19 +39,94 @@
             </div>
         </div>
    	</nav>
-	<header>
-		<div class="container_front_page">
-            <div class="intro-text">
-                <div class="intro-heading">PLANUJ Z<br/> TO-DAY-PLANER</div>
-                <a class="scr-pg" href="#what_we_do"></a>
-            </div>
-        </div>
-	 </header> 
+	<section>
+		<div class="container">
+			<div class="row text-center">
+               	 <div class="col-md-8">			
+        <h2 class="section-heading">Linki</h2>
+			<p class="basic-text">
+			Link 1 >
+			Link 2 >
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>		
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			</br>
+			
+</p>
+		
+				</div>
+			</div>
+		</div>	
+	</section>
+		<div class="footer">
+			<table class="tabfoot">
+				<tr>
+					<td class="caps-b"><b>KONTAKT</b></td>	
+					<td class="caps-b"><b>NAWIGACJA</b></td>
+					<td class="caps-b"><b>PRZYDATNE LINKI</b></td>						
+				</tr>
+				<tr>
+					<td>Email: TodayPlanerSM@gmail.com</td>						
+					<td class="menu"><b><a href="projekt.html">O projekcie</a></b></td>
+					<td>Link1</td>					
+				</tr>
+				<tr>		
+					<td></td>
+					<td class="menu"><b><a href="funkcjonalności.html">Funkcjonalności aplikacji</a></b></td>
+					<td>Link1</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="menu"><b><a href="skład.html">Skład zespołu</a></b></td>
+					<td>Link3</td>				
+				</tr>
+				<tr>
+					<td></td>
+					<td class="menu"><b><a href="linki.html">Przydatne linki</a>/b></td>
+					<td>Link3</td>
+				</tr>
+			</table>
+		</div>
+	<script src="js/header.js"></script>
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="js/classie.js"></script>
     <script src="js/jquery.fancybox.js"></script>
     <script src="js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("a.f").fancybox({
+                'transitionIn'  :   'elastic',
+                'transitionOut' :   'elastic',
+                'speedIn'       :   600, 
+                'speedOut'      :   200, 
+                'overlayShow'   :   false
+            });
+        });
+    </script>
 </body>
 </html>
