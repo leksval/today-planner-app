@@ -7,22 +7,20 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^32.0.0",
-    "firebase": "^6.0.4",
+    "expo": "^32.0.6",
+    "expo-cli": "^2.18.7",
+    "firebase": "^6.1.0",
     "firebaseui": "^4.0.0",
     "native-base": "^2.12.1",
     "react": "16.5.0",
     "react-firebaseui": "^3.1.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
-
+    "react-native-calendars": "^1.155.0",
     "react-native-cli": "^2.0.1",
     "react-native-fbsdk": "^0.8.0",
     "react-native-web-storage": "^0.2.2",
-    "react-navigation": "^3.11.0"
-    "react-native-calendars": "^1.150.0",
     "react-navigation": "^3.11.0",
     "xdate": "^0.8.2"
-
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
