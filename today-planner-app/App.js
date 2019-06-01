@@ -13,6 +13,7 @@ import FilesScreen from './screens/FilesScreen'
 import ForecastScreen from './screens/ForecastScreen'
 import NewEventScreen from './screens/NewEventScreen'
 import PlanScreen from './screens/PlanScreen'
+import CreateEventScreen from './screens/CreateEventScreen'
 
 
 const firebaseConfig = {
@@ -45,6 +46,8 @@ class MainScreen extends React.Component {
   }
 }
 
+
+
 const RootStack = createStackNavigator(
   {
     Main: MainScreen,
@@ -57,6 +60,7 @@ const RootStack = createStackNavigator(
     Forecast: ForecastScreen,
     NewEvent: NewEventScreen,
     Plan: PlanScreen,
+    CreateEvent: CreateEventScreen,
 
   },
   {
