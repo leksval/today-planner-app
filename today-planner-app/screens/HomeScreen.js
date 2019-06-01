@@ -10,27 +10,18 @@ export default class HomeScreen extends React.Component {
     super(props)
 
 }
-static navigateToHome=() => {
-    this.props.navigation.navigate('Home')
-}
-static navigationOptions = () => ({
-    title: 'TO-DAY',  
+
+static navigationOptions = () => ({ 
     headerTintColor: '#ae0578',
     headerStyle: {
       backgroundColor: '#032e5e'
     },
-    headerLeft:
-    <TouchableHighlight onPress={this.navigateToHome}>
-    <Image 
-        style={{flex:1, height: 100, width: 100}}
-        source={require('../assets/icon.png')} 
-        resizeMode="contain" />
- </TouchableHighlight>
-
-  //  headerRight:
-
-     // <HeaderBarItem to='Home' title='Feedback' />
-      
+  
+  headerRight:
+  <Image 
+      style={{flex:1, height: 100, width: 100, marginRight: 10}}
+      source={require('../assets/iconToday.png')} 
+      resizeMode="contain" />
   });
 
 
