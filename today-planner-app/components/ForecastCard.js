@@ -33,7 +33,7 @@ export default class ForecastCard extends Component {
 
 const styles = StyleSheet.create({
 	card:{
-		backgroundColor:'rgba(56, 172, 236, 1)',
+		backgroundColor:'#032e5e',
 		borderWidth:1,
 		borderRadius:1
 	},

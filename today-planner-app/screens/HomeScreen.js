@@ -117,13 +117,16 @@ render() {
  
          <View style={styles.container}>
          <Button 
-                    style={{ marginTop: 40,
-                             marginBottom:20,
+                    style={{ marginTop: 20,
+                             marginBottom:25,
                              backgroundColor:'#032e5e'}}
                     full
                     primary
                     onPress={() => this.props.navigation.navigate('Plan')}>
-                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> MY PLANNER </Text>
+                    <Text style={{ color: '#d41998',
+                                   fontWeight: 'bold',
+                                   fontSize: 25,
+                                   paddingHorizontal:20}}> MY PLANNER </Text>
           </Button>  
           {isLoading ? (
             <View style={styles.loadingContainer}>
@@ -144,7 +147,7 @@ render() {
                     full
                     primary
                     onPress={() => this.props.navigation.navigate('Forecast', {forecast})}>
-                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> FORECAST FOR NEXT 5 DAYS </Text>
+                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18}}> FORECAST FOR NEXT 5 DAYS </Text>
         </Button> 
         </View>
         )}
@@ -163,7 +166,7 @@ container: {
     padding: 10
 },
 loadingContainer: {
-    flex: 1,
+    
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white'

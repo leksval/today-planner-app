@@ -18,7 +18,7 @@ const Weather = ({ weather, temperature, smog, forecast }) => {
           name={weatherConditions[weather].icon}
           color={'#fff'}
         />
-        <Text style={styles.tempText}>{temperature}˚</Text>
+        <Text style={styles.tempText}>{temperature}˚C</Text>
       </View>
       <View style={styles.bodyContainer}>
           <Text style={styles.title}>{weatherConditions[weather].title}</Text>
@@ -44,17 +44,21 @@ const styles = StyleSheet.create({
     flex: 1
   },
   headerContainer: {
-    flex: 1,
+    flex: 2,
+    paddingTop: 15,
+    paddingLeft: 17,
+    paddingRight: 30,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-around'
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    
   },
   tempText: {
     fontSize: 52,
     color: '#fff'
   },
   bodyContainer: {
-    flex: 2,
+    flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
     paddingLeft: 25,
@@ -65,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
     paddingLeft: 25,
-    marginBottom: 100
+    marginBottom: 20
   },
   title: {
     fontSize: 40,
