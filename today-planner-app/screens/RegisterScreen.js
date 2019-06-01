@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, Image} from 'react-native';
 import { Form, Input, Item, Button, Label } from 'native-base';
-
+import * as firebase from 'firebase';
 
 
 export default class SignInScreen extends React.Component {
@@ -25,7 +25,12 @@ signUpUser = (email, password) => {
             alert("Passwords does not match")
             return;
         }
-        firebase.auth().createUserWithEmailAndPassword(email, password)
+        firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(alert("Successfully registered!"))
+        .then(() => this.props.navigation.navigate('Home'))
+        
     }
     catch (error) {
         console.log(error.toString())

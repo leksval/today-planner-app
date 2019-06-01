@@ -2,118 +2,37 @@ import React from 'react';
 import {  Text, View, Image} from 'react-native';
 import * as firebase from 'firebase';
 import { Input, Item,  Label, Button } from 'native-base';
-import { PROVIDER_GOOGLE } from 'react-native-maps';
+
+
 
 export const provider = new firebase.auth.FacebookAuthProvider()
+
 
 export default class SignInScreen extends React.Component {
 
   static navigationOptions = { title: 'Welcome', header: null};
   state = { email: '', password: '', errorMessage: null }
 
-
-
-
-/*
-
-
-  loginFB = () => {
-    firebase.auth()
-      .signInWithRedirect(provider)
-      .then(({ user }) => {
-        this.setState({ user: user });
-        console.log(this.state.user.displayName);
-        firebase
-          .firestore()
-          .collection("users")
-          .add({
-            username: this.state.user.displayName,
-            isAdmin: false
-          });
-      });
-};
-
-
-
-
-
-
-
-  onSubmitFb = event => {
-    this.props.firebase.auth
-      .doSignInWithFacebook()
-      .then(socialAuthUser => {
-        // Create a user in your Firebase Realtime Database too
-        return this.props.firebase.user(socialAuthUser.user.uid).set({
-          username: socialAuthUser.additionalUserInfo.profile.name,
-          email: "todayplannersm@gmail.com",
-          //email: socialAuthUser.additionalUserInfo.profile.email,
-          roles: []
-        });
-      })
-      .then(() => {
-        this.setState({ error: null });
-        this.props.history.push(ROUTES.LANDING);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
- 
-    event.preventDefault();
-  };
-
- 
-    
-
-
-  onSubmitGo = () => {
-
-  var provider = new firebase.auth.GoogleAuthProvider();
-  provider.addScope('profile');
-  provider.addScope('https://www.googleapis.com/auth/drive');
-  firebase.auth().signInWithRedirect(provider);
-  //add the code below to your previous lines
-  firebase.auth().getRedirectResult().then(function(authData) {
-      console.log(authData);
-  }).catch(function(error) {
-      console.log(error);
-  });
-
-  }
-
-
-
-
-
-
-  async loginWithFacebook() {
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync('2343814272380107', { permissions: ['public_profile'] })
-
-    if (type == 'success') {
-
-      const credential = firebase.auth.FacebookAuthProvider.credential(token)
-
-      firebase
+  handleLogin = () => {
+    const { email, password } = this.state
+    firebase
       .auth()
-      .signInWithCredential(credential)
+      .signInWithEmailAndPassword(email, password)
       .then(() => this.props.navigation.navigate('Home'))
-      .catch((error) => {
-        console.log(error)
-      })
-    }
+      .catch(error => this.setState({ errorMessage: error.message }))
   }
 
-*/
-
+  handleFacebookLogin = () => {
+    const  emailFB = 'bartoszl@gmail.com'
+    const  passwordFB =  '2343814272380107'
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(emailFB, passwordFB)
+      .then(() => this.props.navigation.navigate('Home'))
+      .catch(error => this.setState({ errorMessage: error.message }))
+  }
   
-handleLogin = () => {
-  const { email, password } = this.state
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(() => this.props.navigation.navigate('Home'))
-    .catch(error => this.setState({ errorMessage: error.message }))
-}
+
 
   render() {
     return (
@@ -190,20 +109,13 @@ handleLogin = () => {
                 </Button> 
                 <Button 
                     style={{ 
-                             backgroundColor:'#032e5e'}}
+                             backgroundColor:'#3B5998'}}
                     full
                     primary
-                    onPress={this.loginFB}>
-                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> CONTINUE WITH FACEBOOK </Text>
+                    onPress={this.handleFacebookLogin}>
+                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 15}}> CONTINUE WITH FACEBOOK </Text>
                 </Button> 
-                <Button 
-                    style={{ 
-                             backgroundColor:'#032e5e'}}
-                    full
-                    primary
-                    onPress={ this.onSubmitGo}>
-                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> CONTINUE WITH GOOLGE </Text>
-                </Button> 
+
             
         </View>
       </View>

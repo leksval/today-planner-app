@@ -14,6 +14,7 @@ import ForecastScreen from './screens/ForecastScreen'
 import NewEventScreen from './screens/NewEventScreen'
 import PlanScreen from './screens/PlanScreen'
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyDhpJspUGaxOSNO8Vr6H3a6L8zyRC9UGUw",
   authDomain: "todayplannersm-9880d.firebaseapp.com",
@@ -55,7 +56,8 @@ const RootStack = createStackNavigator(
     Files: FilesScreen,
     Forecast: ForecastScreen,
     NewEvent: NewEventScreen,
-    Plan: PlanScreen
+    Plan: PlanScreen,
+
   },
   {
     initialRouteName: 'SignIn',
