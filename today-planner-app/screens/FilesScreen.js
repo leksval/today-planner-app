@@ -10,22 +10,18 @@ export default class FilesScreen extends React.Component {
     super(props)
 
 }
-static navigationOptions = () => ({
-    title: 'TO-DAY',  
+
+static navigationOptions = () => ({ 
     headerTintColor: '#ae0578',
     headerStyle: {
       backgroundColor: '#032e5e'
     },
-    headerLeft:
-    <TouchableHighlight onPress={() => this.props.navigation.navigate('Home')}>
-    <Image 
-        style={{flex:1, height: 100, width: 100}}
-        source={require('../assets/icon.png')} 
-        resizeMode="contain" />
- </TouchableHighlight>
-  //  headerRight:
-  //    <HeaderBarItem to='FeedbackScreen' title='Feedback' />
-      
+  
+  headerRight:
+  <Image 
+      style={{flex:1, height: 100, width: 100, marginRight: 10}}
+      source={require('../assets/iconToday.png')} 
+      resizeMode="contain" />
   });
 
 
