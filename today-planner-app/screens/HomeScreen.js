@@ -30,7 +30,13 @@ headerRight:
     source={require('../assets/iconToday.png')} 
     resizeMode="contain" />
 });
-
+signOutUser()  {
+  firebase.auth().signOut().then(
+  () => this.props.navigation.navigate('SignIn')
+  ).catch(function(error) {
+    // An error happened.
+  });
+}
 componentDidMount() {
     this.getLocation();
     this.getAirQ();
@@ -148,6 +154,14 @@ render() {
                     primary
                     onPress={() => this.props.navigation.navigate('Forecast', {forecast})}>
                     <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18}}> FORECAST FOR NEXT 5 DAYS </Text>
+        </Button> 
+        <Button 
+                    style={{ marginTop: 10,
+                             backgroundColor:'#032e5e'}}
+                    full
+                    primary
+                    onPress={() => this.signOutUser()}>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 18}}> SIGN OUT </Text>
         </Button> 
         </View>
         )}
