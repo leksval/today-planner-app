@@ -31,9 +31,12 @@ headerRight:
     resizeMode="contain" />
 });
 signOutUser()  {
-  firebase.auth().signOut().then(
-  () => this.props.navigation.navigate('SignIn')
+  firebase
+  .auth()
+  .signOut()
   .then(firebase.auth().currentUser.uid = '')
+  .then(() => this.props.navigation.navigate('SignIn')
+  
   ).catch(function(error) {
     // An error happened.
   });
@@ -115,6 +118,7 @@ componentDidMount() {
     return answer;
   }
 render() {
+  console.log(firebase.auth().currentUser.uid)
   const { isLoading, weatherCondition, temperature, forecast, aqiData } = this.state;
     var smog = this.airQualityStatus(aqiData);
     return (
