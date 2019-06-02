@@ -20,7 +20,7 @@ export default class CreateEvent extends React.Component {
     
 }
 
-createEvent = (title, date, hour, length, items) => {
+createEvent = (title, date, hour, length, location, items) => {
     try {
         if (!this.state.title) {
             alert("Title box must not be empty")
@@ -38,13 +38,18 @@ createEvent = (title, date, hour, length, items) => {
             alert("Enter duration of the event")
             return;
         }
+        if (!this.state.location) {
+            alert("Enter location of the event")
+            return;
+        }
         alert("Event created")
         this.props.navigation.navigate("NewEvent")
         firebase.database().ref(userId).push({
             title,
             date,
             length,
-            hour
+            hour,
+            location
         })
     }
          catch (error) {
@@ -128,13 +133,23 @@ render() {
                         style={{ color: '#032e5e' }}
                         onChangeText={(length) => this.setState({ length })}
                     />
-                </Item>          
+                </Item>
+                <Item floatingLabel>
+                    <Label style={{color:'#ae0578'}}>where is the event located?</Label>
+                    <Input
+                        secureTextEntry={false}
+                        autoCorrect={false}
+                        autoCapitalize="sentences"
+                        style={{ color: '#032e5e' }}
+                        onChangeText={(location) => this.setState({ location })}
+                    />
+                </Item>            
                 <Button 
                     style={{ marginTop: 40,
                              backgroundColor:'#032e5e'}}
                     full
                     primary
-                    onPress={ () => this.createEvent(this.state.title, this.state.date, this.state.hour, this.state.length)}>
+                    onPress={ () => this.createEvent(this.state.title, this.state.date, this.state.hour, this.state.length, this.state.location)}>
                     <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> Create Event </Text>
                 </Button>           
             </Form>

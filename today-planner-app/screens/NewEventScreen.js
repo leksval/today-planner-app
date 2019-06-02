@@ -65,9 +65,10 @@ _onRefresh = () => {
             items.push({
                 title: products.date,
                 data: [{
+                  date: products.date,
                   hour: products.hour,
                   duration: products.length,
-                  title: products.title
+                  title: products.title + " - " + products.location
                 }]
             })
         });
@@ -85,8 +86,11 @@ onDateChanged = (/**date, updateSource*/) => {
   // fetch and set data for date + week ahead
 }
 getSections() {
+  console.log(items, "1")
   const sections = _.compact(_.map(items, (item) => {
+    console.log({title: item.title, data: item.data})
     return {title: item.title, data: item.data};
+    
   }));
   return sections;
 
@@ -107,12 +111,13 @@ renderEmptyItem() {
     const id = item.title;
     const props = {
       hour: item.hour,
+      date: item.date,
       duration: item.duration,
       title: item.title,
 
       button: {label: 'SHARE', 
       onPress: () => Communications.text('', props.title + ': ' 
-                                        +'\nAt ' + props.hour 
+                                        +'\nAt ' + props.date + " "
                                         + ', \nDuration time: ' + props.duration 
                                         + 'h')},
       onPress: () => Alert.alert(id , '\nAt ' + props.hour + ', \nDuration time: ' + props.duration + 'h' )
@@ -199,7 +204,7 @@ renderEmptyItem() {
   render() {  
     const style = {paddingLeft: 20, paddingRight: 20};
     if (!this.state.loaded){
-      setTimeout(() => {this.setState({loaded: true})}, 15000)}
+      setTimeout(() => {this.setState({loaded: true})}, 10000)}
       this._onRefresh
     return (
       <CalendarProvider date={START_DATE} onDateChanged={this.onDateChanged}>
