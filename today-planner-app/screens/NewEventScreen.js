@@ -12,6 +12,7 @@ import {
   Loading,
   ActivityIndicator,
   AppRegistry,
+  RefreshControl
 
 } from 'react-native';
 import XDate from 'xdate';
@@ -34,7 +35,8 @@ export default class ExpandableCalendarScreen extends Component {
   state = {
     userId: firebase.auth().currentUser.uid, 
     items: [],
-    loaded: false
+    loaded: false,
+    refreshing: false
 };
 
 constructor() {
@@ -42,6 +44,11 @@ constructor() {
     this.database = firebase.database().ref(`${this.state.userId}`);
     this.database.once('value', function (snapshot) {
   })
+}
+_onRefresh = () => {
+  this.setState({refreshing: true});
+  this.getDataFromDatabase()
+  this.setState({refreshing: false});
 }
 
   getDataFromDatabase() {
@@ -204,6 +211,10 @@ renderEmptyItem() {
           futureScrollRange={50}
           renderItem={this.renderItem}
           sections={this.getSections()}
+          refreshControl= {<RefreshControl
+          refreshing={this.state.refreshing}
+          onRefresh={this._onRefresh}
+          />}
         />
         <FAB
         style={styles.fab}
