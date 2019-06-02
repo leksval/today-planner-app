@@ -105,7 +105,7 @@ export default class SignInScreen extends React.Component {
                     full
                     primary
                     onPress={() => this.props.navigation.navigate('Register')}>
-                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> DON'T HAVE AN ACCOUNT? SIGN UP </Text>
+                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 15}}> REGISTER </Text>
                 </Button> 
                 <Button 
                     style={{ 

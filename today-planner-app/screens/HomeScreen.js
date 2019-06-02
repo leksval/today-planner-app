@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import { Container, Button, Content, Header, Form, Input, Item, Label } from 'native-base';
 import Weather from '../components/Weather';
 
+
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props)
@@ -23,13 +24,15 @@ static navigationOptions = () => ({
   headerStyle: {
     backgroundColor: '#032e5e'
   },
-
+headerLeft: 
+  <Text> </Text>,
 headerRight:
 <Image 
     style={{flex:1, height: 100, width: 100, marginRight: 10}}
     source={require('../assets/iconToday.png')} 
     resizeMode="contain" />
 });
+
 signOutUser()  {
   firebase
   .auth()
@@ -42,6 +45,7 @@ signOutUser()  {
   });
 }
 componentDidMount() {
+    //() => getDataFromDatabase();
     this.getLocation();
     this.getAirQ();
   }
@@ -118,7 +122,6 @@ componentDidMount() {
     return answer;
   }
 render() {
-  console.log(firebase.auth().currentUser.uid)
   const { isLoading, weatherCondition, temperature, forecast, aqiData } = this.state;
     var smog = this.airQualityStatus(aqiData);
     return (
@@ -166,7 +169,7 @@ render() {
                     full
                     primary
                     onPress={() => this.signOutUser()}>
-                    <Text style={{ color: '#d41998', fontWeight: 'bold', fontSize: 18}}> SIGN OUT </Text>
+                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18}}> SIGN OUT </Text>
         </Button> 
         </View>
         )}

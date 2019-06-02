@@ -19,6 +19,7 @@ import XDate from 'xdate';
 import {ExpandableCalendar, AgendaList, CalendarProvider} from 'react-native-calendars';
 import firebase from 'firebase';
 import { FAB } from 'react-native-paper';
+import Communications from 'react-native-communications';
 
 const START_DATE = XDate().toString('yyyy-MM-dd');
 var items = []
@@ -108,8 +109,13 @@ renderEmptyItem() {
       hour: item.hour,
       duration: item.duration,
       title: item.title,
-      button: {label: 'info', onPress: () => Alert.alert('show more')},
-      onPress: () => Alert.alert(id)
+
+      button: {label: 'SHARE', 
+      onPress: () => Communications.text('', props.title + ': ' 
+                                        +'\nAt ' + props.hour 
+                                        + ', \nDuration time: ' + props.duration 
+                                        + 'h')},
+      onPress: () => Alert.alert(id , '\nAt ' + props.hour + ', \nDuration time: ' + props.duration + 'h' )
     };
 
     return (
@@ -194,6 +200,7 @@ renderEmptyItem() {
     const style = {paddingLeft: 20, paddingRight: 20};
     if (!this.state.loaded){
       setTimeout(() => {this.setState({loaded: true})}, 15000)}
+      this._onRefresh
     return (
       <CalendarProvider date={START_DATE} onDateChanged={this.onDateChanged}>
         <ExpandableCalendar 
@@ -205,10 +212,6 @@ renderEmptyItem() {
 
         />
         <AgendaList
-          minDate={'2012-05-10'}
-          maxDate={'3019-05-30'}
-          pastScrollRange={50}
-          futureScrollRange={50}
           renderItem={this.renderItem}
           sections={this.getSections()}
           refreshControl= {<RefreshControl
