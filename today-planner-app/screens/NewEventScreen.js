@@ -17,6 +17,7 @@ import {
 import XDate from 'xdate';
 import {ExpandableCalendar, AgendaList, CalendarProvider} from 'react-native-calendars';
 import firebase from 'firebase';
+import { FAB } from 'react-native-paper';
 
 const START_DATE = XDate().toString('yyyy-MM-dd');
 var items = []
@@ -111,11 +112,11 @@ renderEmptyItem() {
       >
         <View>
           <Text style={styles.itemHourText}>{props.hour}</Text>
-          <Text style={styles.itemDurationText}>{props.duration}</Text>
+          <Text style={styles.itemDurationText}>{props.duration} h</Text>
         </View>
         <Text style={styles.itemTitleText}>{props.title}</Text>
         <View style={styles.itemButtonContainer}>
-          <Button title={props.button.label} onPress={props.button.onPress}/>
+          <Button color='#032e5e' title={props.button.label} onPress={props.button.onPress}/>
         </View>
       </TouchableOpacity>
     );
@@ -131,10 +132,11 @@ renderEmptyItem() {
 
   getTheme = () => {
     const themeColor = '#032e5e';
-    const lightThemeColor = '#05468e';
+    const lightThemeColor = '#d41998';
     const disabledColor = '#a6acb1';
     const black = '#20303c';
     const white = '#ffffff';
+    
     
     return {
       // arrows
@@ -193,24 +195,42 @@ renderEmptyItem() {
           calendarStyle={style}
           theme={this.getTheme()}
           headerStyle={style}
+
         />
         <AgendaList
-          data={items}
+          minDate={'2012-05-10'}
+          maxDate={'3019-05-30'}
+          pastScrollRange={50}
+          futureScrollRange={50}
           renderItem={this.renderItem}
           sections={this.getSections()}
         />
+        <FAB
+        style={styles.fab}
+        icon="add"
+        color ='white'
+        onPress={() => this.props.navigation.navigate('CreateEvent')}
+        />          
       </CalendarProvider>
+      
     );
   }
 }
 
 const styles = StyleSheet.create({
+  fab: {
+    position: 'absolute',
+    margin: 20,
+    right: 0,
+    bottom: 0,
+    backgroundColor:'#ae0578',
+  },
   item: {
     padding: 20, 
     backgroundColor: 'white', 
     borderBottomWidth: 1, 
     borderBottomColor: '#e8ecf0', 
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   itemHourText: {
     color: 'black'
@@ -229,7 +249,8 @@ const styles = StyleSheet.create({
   },
   itemButtonContainer: {
     flex: 1, 
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
+    
   },
   emptyItem: {
     paddingLeft: 20,

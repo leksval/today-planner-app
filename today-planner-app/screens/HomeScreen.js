@@ -33,6 +33,7 @@ headerRight:
 signOutUser()  {
   firebase.auth().signOut().then(
   () => this.props.navigation.navigate('SignIn')
+  .then(firebase.auth().currentUser.uid = '')
   ).catch(function(error) {
     // An error happened.
   });
@@ -128,7 +129,7 @@ render() {
                              backgroundColor:'#032e5e'}}
                     full
                     primary
-                    onPress={() => this.props.navigation.navigate('Plan')}>
+                    onPress={() => this.props.navigation.navigate('NewEvent')}>
                     <Text style={{ color: '#d41998',
                                    fontWeight: 'bold',
                                    fontSize: 25,

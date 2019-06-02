@@ -21,6 +21,7 @@
     "react-native-communications": "^2.2.1",
     "react-native-elements": "^1.1.0",
     "react-native-fbsdk": "^0.8.0",
+    "react-native-paper": "^2.15.2",
     "react-native-web-storage": "^0.2.2",
     "react-navigation": "^3.11.0",
     "xdate": "^0.8.2"
