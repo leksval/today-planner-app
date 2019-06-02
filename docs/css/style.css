@@ -16,13 +16,20 @@ a:active{
 a {
     color: #a6a6a6;
 }
+a.link{
+    color: black;
+}
 
 a:hover,
 a:focus,
 a:active { 
     color: white;
 }
-
+a.link:hover,
+a.link:focus,
+a.link:active { 
+    color: gray;
+}
 a.f img{
 	
 
@@ -204,7 +211,7 @@ fieldset[disabled] .send.active {
     border-color: rgba(255,255,255,.02);
 }
 
-.navbar-default .navbar-toggle {
+.navbar-default .navbar-toggle .navbar-collapse {
     border-color: white;
     background-color: black;
 }
@@ -324,6 +331,7 @@ header .intro-text .intro-lead-in {
 header .intro-text .intro-heading {
     margin-bottom: 25px;
     text-transform: uppercase;
+	color: black;
     font-size: 30px;
     font-weight: 500;
     line-height: 30px;
@@ -345,6 +353,7 @@ header .intro-text .intro-heading {
     header .intro-text .intro-heading {
         margin-bottom: 50px;
         text-transform: uppercase;
+		color: black;
         font-size: 65px;
         font-weight: 500;
         line-height: 75px;
