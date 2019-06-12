@@ -23,8 +23,8 @@ export default class SignInScreen extends React.Component {
   }
 
   handleFacebookLogin = () => {
-    const  emailFB = 'bartoszl@gmail.com'
-    const  passwordFB =  '2343814272380107'
+    const  emailFB = 'facebook@gmail.com'
+    const  passwordFB =  '111111'
     firebase
       .auth()
       .signInWithEmailAndPassword(emailFB, passwordFB)
