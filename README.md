@@ -1,21 +1,17 @@
-## 🌟 TO-DAY: Smart Daily Planner with Weather Intelligence  
+## 🌟 TO-DAY: Smart Daily Planner with Weather Intelligence  (REFACTORED README)
 
 A comprehensive React Native mobile application that revolutionizes daily planning by combining event management, social sharing, and environmental intelligence to help users make informed decisions about their day.
-
-**🔗 Live Demo**: [https://leksval.github.io/today-planner-app/index.html](https://leksval.github.io/today-planner-app/index.html)  
-**📱 Download APK**: [Release Files](https://github.com/leksval/today-planner-app/tree/master/today-planner-app/app_file)
 
 ## ✨ Key Features
 
 ### 📅 Smart Event Management
-- **Intuitive Event Creation**: Quick and easy event scheduling with customizable details[1][2]
-- **Timeline View**: Visual timeline organization similar to popular daily planners[3][4]
-- **Real-time Synchronization**: Seamless data sync across devices using Firebase[5][6]
+- **Intuitive Event Creation**: Quick and easy event scheduling with customizable details
+- **Timeline View**: Visual timeline organization similar to popular daily planners
+- **Real-time Synchronization**: Seamless data sync across devices using Firebase
 
 ### 🌤️ Environmental Intelligence
 - **Weather Forecasting**: Integrated weather data to help plan outdoor activities
 - **Air Quality Monitoring**: Real-time air quality index information for health-conscious planning[7][8]
-- **Smart Recommendations**: AI-powered suggestions based on weather and air quality conditions
 
 ### 👥 Social Collaboration  
 - **Event Sharing**: Share events and plans with friends and family
@@ -23,7 +19,6 @@ A comprehensive React Native mobile application that revolutionizes daily planni
 - **Social Timeline**: See shared events in your daily timeline
 
 ### 🎯 User Experience
-- **Cross-Platform**: Runs seamlessly on iOS, Android, and web platforms[2][9]
 - **Offline Support**: Core functionality available without internet connection
 - **Intuitive Interface**: Clean, modern design following mobile best practices[10][9]
 
